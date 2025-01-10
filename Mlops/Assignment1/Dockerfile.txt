@@ -1,0 +1,25 @@
+Dockerfile code:
+FROM python:3.9.13
+
+# Set the working directory in the container
+WORKDIR /app
+
+# Upgrade pip
+RUN python -m pip install --upgrade pip
+
+# Copy all necessary files to the container
+COPY . /app
+
+# Set environment variables
+ENV PYTHONPATH="${PYTHONPATH}:/app"
+ENV DATA_FILE_PATH=/app/Assignment_1_Set_1_Dataset.csv
+ENV PKL_FILE_PATH=/app/model.pkl
+
+# Install dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Expose port for the application
+EXPOSE 5001
+
+# Run the application
+CMD ["python", "/app/ML_Model.py"]

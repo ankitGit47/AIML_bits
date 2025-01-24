@@ -28,7 +28,7 @@ jobs:
           pip install flake8
 
       - name: Run linter
-        run: flake8 hello.py
+        run: flake8 hello_world.py
 
   test:
     name: Run Tests
